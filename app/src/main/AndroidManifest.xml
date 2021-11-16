@@ -28,7 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mvvm.ui.activities.LoginActivity" /> <!-- <activity android:name=".ui.activities.UserListActivity" /> -->
+        <activity android:name="com.mvvm.ui.activities.LoginActivity" />
+         <activity android:name=".ui.activities.UserListActivity" />
         <activity android:name="com.mvvm.ui.activities.RegisterActivity" />
     </application>
 

@@ -1,5 +1,5 @@
-package com.mvvm.documentmanager;
+package com.mvvm.documentmanager
 
-public interface OnDocumentSelectedListener {
-    void onDocumentSelected(DocumentType documentType, String imagePath);
+interface OnDocumentSelectedListener {
+    fun onDocumentSelected(documentType: DocumentType?, imagePath: String?)
 }
