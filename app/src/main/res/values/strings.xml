@@ -1,0 +1,41 @@
+<resources>
+    <!--    <string name="app_name">Sunteck Realty</string>-->
+
+    <string name="msg_unable_connect_with_server">We are unable to connect with the server. Please try after some time.</string>
+
+
+    <!--messages-->
+    <string name="msg_please_wait" translatable="false">Please wait...</string>
+    <string name="msg_thing_ready" translatable="false">Thing(s) are getting ready for you</string>
+    <string name="lbl_choose_your_option">Choose Your Option</string>
+    <string name="lbl_document">Document</string>
+    <string name="lbl_image">Image</string>
+    <string name="lbl_capture">Capture</string>
+    <string name="max_size_validate" translatable="false">Files size must be less than 5 MB.Try again!</string>
+    <string name="generic_error" translatable="false">Please try again!</string>
+    <string name="lbl_gender">Gender :</string>
+    <string name="lbl_male">Male</string>
+    <string name="lbl_female">Female</string>
+    <string name="lbl_notification_s">Notification(s) :</string>
+    <string name="lbl_item">Item :</string>
+    <string name="lbl_hobbies">Hobbies :</string>
+    <string name="lbl_cricket">Cricket</string>
+    <string name="lbl_dance">Dance</string>
+    <string name="lbl_other">Other</string>
+    <string name="lbl_user_name">User Name</string>
+    <string name="lbl_user_email">User Email</string>
+    <string name="lbl_user_password">User Password</string>
+    <string name="lbl_register">Register</string>
+    <string name="lbl_login">Login</string>
+    <string name="error_name">Please Enter Valid Name</string>
+    <string name="txt_choose_photo">Choose Photo</string>
+    <string name="second_activity">Second Activity</string>
+
+    <array name="item_list">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+        <item>item5</item>
+    </array>
+</resources>
