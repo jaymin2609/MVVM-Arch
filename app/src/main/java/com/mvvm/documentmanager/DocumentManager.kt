@@ -184,11 +184,6 @@ class DocumentManager {
             listener.onDocumentSelected(documentType, destination?.path)
 
 
-            /*uploadFileBytes(
-                fileObjToUpload!!,
-                AppHelper.getFileDataFromDrawable(mContext, scaled, "image/jpeg")
-            )*/
-
         } else {
             ((mContext as AppCompatActivity)).window.decorView.findViewById<View>(android.R.id.content)
                 .snack(mContext.resources.getString(R.string.generic_error)) {}
@@ -225,11 +220,6 @@ class DocumentManager {
                 }
 
                 listener.onDocumentSelected(documentType, path)
-
-                /*uploadFileBytes(
-                    fileObjToUpload!!,
-                    AppHelper.getFileDataFromDrawable(mContext, scaled, "image/jpeg")
-                )*/
 
             }
         } catch (ex: Exception) {
@@ -268,11 +258,6 @@ class DocumentManager {
 
                     listener.onDocumentSelected(documentType, currentFilePath)
 
-
-                    /*uploadFileBytes(
-                        fileObjToUpload!!,
-                        AppHelper.getByteFromFilePath(currentFilePath)
-                    )*/
                 }
 
             }

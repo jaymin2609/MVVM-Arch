@@ -24,14 +24,14 @@
         <TextView
             android:id="@+id/tvError"
             manageErrorVisibility="@{viewModel.userList.status}"
-            android:text="@{viewModel.userList.message}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            tools:text="No Data Found"
+            android:text="@{viewModel.userList.message}"
             android:textColor="@color/black"
-            android:theme="@style/LargeTextStyleBold" />
+            android:theme="@style/LargeTextStyleBold"
+            tools:text="No Data Found" />
 
         <ProgressBar
             android:id="@+id/pbUserList"

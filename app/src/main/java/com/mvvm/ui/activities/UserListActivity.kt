@@ -22,7 +22,7 @@ import com.mvvm.locationmanager.GPSResponder
 import com.mvvm.locationmanager.LocationChangeListener
 import com.mvvm.locationmanager.LocationFinderAware
 import com.mvvm.rootmanager.BaseActivity
-import com.mvvm.rootmanager.Status
+import com.mvvm.rootmanager.SealedResource
 import com.mvvm.ui.adapters.UserListAdapter
 import com.mvvm.ui.viewmodels.UserListViewModel
 import com.mvvm.utilities.LogUtils
@@ -71,7 +71,7 @@ class UserListActivity : BaseActivity(), LocationChangeListener {
             UserListAdapter { listItemClicked(it) }
         binding.rvUserList.adapter = userListAdapter
         bindObserver()
-        getLocationUpdates()
+//        getLocationUpdates()
     }
 
     private fun bindObserver() {
@@ -82,13 +82,27 @@ class UserListActivity : BaseActivity(), LocationChangeListener {
         })
         /*Observe data from API call*/
         userListViewModel.userList.observe(this, Observer { userList ->
-            when (userList.status) {
-                Status.SUCCESS -> {
+            when (userList) {
+                is SealedResource.Success -> {
+                    //This is handle inside the .xml using data binding
+                    /*binding.pbUserList.makeGone()
+                    binding.rvUserList.makeVisible()
+                    binding.tvError.makeGone()*/
                     userListAdapter.setList(userList.data!!)
                     userListAdapter.notifyDataSetChanged()
                 }
-                Status.ERROR -> {
-
+                is SealedResource.Error -> {
+                    //This is handle inside the .xml using data binding
+                    /*binding.pbUserList.makeGone()
+                    binding.rvUserList.makeGone()
+                    binding.tvError.makeVisible()
+                    binding.tvError.text = userList.message*/
+                }
+                is SealedResource.Loading -> {
+                    //This is handle inside the .xml using data binding
+                    /*binding.pbUserList.makeVisible()
+                    binding.rvUserList.makeGone()
+                    binding.tvError.makeGone()*/
                 }
             }
 
