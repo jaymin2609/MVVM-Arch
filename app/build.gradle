@@ -51,7 +51,7 @@ android {
             resValue "string", "app_name", "Demo App"
             versionCode 1
             versionName "1.0.0"
-            buildConfigField 'String', 'BASE_URL', '"https://m.hdfcergo.com/computation/ServiceImplementation/Service.svc/"'
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
         }
         qa {
             resValue "string", "app_name", "QA-Demo App"
@@ -59,14 +59,14 @@ android {
             isDefault.set(true)
             versionCode 1
             versionName "1.0.0"
-            buildConfigField 'String', 'BASE_URL', '"http://202.191.196.210/UAT/IPO/Computation/ServiceImplementation/Service.svc/"'
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
         }
         uat {
             resValue "string", "app_name", "UAT-Demo App"
             applicationIdSuffix ".uat"
             versionCode 1
             versionName "1.0.0"
-            buildConfigField 'String', 'BASE_URL', '"http://202.191.196.210/UAT/IPO/Computation/ServiceImplementation/Service.svc/"'
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
         }
 
         applicationVariants.all { variant ->

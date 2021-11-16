@@ -11,10 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Url
+import retrofit2.http.*
 import javax.inject.Inject
 
 class ApiServiceProviderGeneric @Inject constructor(
@@ -124,6 +121,49 @@ class ApiServiceProviderGeneric @Inject constructor(
         }
     }
 
+    fun getCall(
+        returnType: ReturnType
+    ) {
+        coroutineScope.launch {
+            try {
+                launch(Dispatchers.Main) {
+                    apiResponseCallBack?.apply { onPreExecute(returnType) }
+                }
+                LogUtils.logE(
+                    "APIClient",
+                    "End Point : ${returnType.endPoint.substringAfterLast("/")}"
+                )
+
+                val call = getClient().create(GetCallReference::class.java)
+                    .getCall(returnType.endPoint)
+                launch(Dispatchers.Main) {
+                    if (call.body() != null && call.isSuccessful) {
+                        LogUtils.logE(classTag, "response : ${call.body() as JsonElement}")
+                        apiResponseCallBack?.apply {
+                            onSuccess(returnType, call.body().toString())
+                        }
+                    } else {
+                        apiResponseCallBack?.apply {
+                            onError(
+                                returnType,
+                                ResourceProvider.applicationContext.getString(R.string.msg_unable_connect_with_server)
+                            )
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                launch(Dispatchers.Main) {
+                    apiResponseCallBack?.apply {
+                        onError(
+                            returnType,
+                            ResourceProvider.applicationContext.getString(R.string.msg_unable_connect_with_server)
+                        )
+                    }
+                }
+                LogUtils.logE(classTag, e)
+            }
+        }
+    }
     fun getCallUrl(
         returnType: ReturnType
     ) {
@@ -132,8 +172,58 @@ class ApiServiceProviderGeneric @Inject constructor(
                 launch(Dispatchers.Main) {
                     apiResponseCallBack?.apply { onPreExecute(returnType) }
                 }
+                LogUtils.logE(
+                    "APIClient",
+                    "End Point : ${returnType.endPoint.substringAfterLast("/")}"
+                )
+
                 val call = getClientUrl(returnType.endPoint).create(GetCallReference::class.java)
                     .getCall(returnType.endPoint.substringAfterLast("/"))
+                launch(Dispatchers.Main) {
+                    if (call.body() != null && call.isSuccessful) {
+                        LogUtils.logE(classTag, "response : ${call.body() as JsonElement}")
+                        apiResponseCallBack?.apply {
+                            onSuccess(returnType, call.body().toString())
+                        }
+                    } else {
+                        apiResponseCallBack?.apply {
+                            onError(
+                                returnType,
+                                ResourceProvider.applicationContext.getString(R.string.msg_unable_connect_with_server)
+                            )
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                launch(Dispatchers.Main) {
+                    apiResponseCallBack?.apply {
+                        onError(
+                            returnType,
+                            ResourceProvider.applicationContext.getString(R.string.msg_unable_connect_with_server)
+                        )
+                    }
+                }
+                LogUtils.logE(classTag, e)
+            }
+        }
+    }
+
+    fun getCallUrlQuery(
+        returnType: ReturnType,
+        options: Map<String, String>
+    ) {
+        coroutineScope.launch {
+            try {
+                launch(Dispatchers.Main) {
+                    apiResponseCallBack?.apply { onPreExecute(returnType) }
+                }
+                LogUtils.logE(
+                    "APIClient",
+                    "End Point : ${returnType.endPoint.substringAfterLast("/")}"
+                )
+
+                val call = getClientUrl(returnType.endPoint).create(GetCallReference::class.java)
+                    .getCallQuery(returnType.endPoint.substringAfterLast("/"), options)
                 launch(Dispatchers.Main) {
                     if (call.body() != null && call.isSuccessful) {
                         LogUtils.logE(classTag, "response : ${call.body() as JsonElement}")
@@ -173,6 +263,12 @@ class ApiServiceProviderGeneric @Inject constructor(
         @GET
         suspend fun getCall(
             @Url url: String
+        ): Response<JsonElement>
+
+        @GET
+        suspend fun getCallQuery(
+            @Url url: String,
+            @QueryMap options: Map<String, String>
         ): Response<JsonElement>
     }
 }

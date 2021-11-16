@@ -10,6 +10,7 @@ import com.mvvm.database.repository.UserRepository
 import com.mvvm.networking.ApiResponseCallBack
 import com.mvvm.networking.ApiServiceProviderGeneric
 import com.mvvm.networking.ReturnType
+import com.mvvm.pojos.Comment
 import com.mvvm.rootmanager.BaseViewModel
 import com.mvvm.rootmanager.SealedResource
 import com.mvvm.utilities.LogUtils
@@ -51,8 +52,13 @@ class UserListViewModel @Inject constructor(
     }
 
     private fun callUsersApi() {
-        apiServiceProviderGeneric.getCallUrl(
+        apiServiceProviderGeneric.getCall(
             ReturnType.GET_USERS
+        )
+        val map = mapOf("postId" to "1")
+        apiServiceProviderGeneric.getCallUrlQuery(
+            ReturnType.GET_COMMENTS_QUERY,
+            map
         )
     }
 
@@ -65,12 +71,23 @@ class UserListViewModel @Inject constructor(
         dataLoading.value = false
         try {
             if (returnType == ReturnType.GET_USERS) {
+                LogUtils.logE(classTag, "Response GET_USERS $response")
                 val responseUsers = Gson().fromJson<List<UserEntity>>(
                     response,
                     object : TypeToken<List<UserEntity>>() {}.type
                 )
-                LogUtils.logE(classTag, "Size of users ${responseUsers.size}")
+                LogUtils.logE(classTag, "Size of users from GET_USERS ${responseUsers.size}")
                 _userList.value = SealedResource.Success(responseUsers)
+            } else if (returnType == ReturnType.GET_COMMENTS_QUERY) {
+                LogUtils.logE(classTag, "Response GET_COMMENTS_QUERY $response")
+                val responseComment = Gson().fromJson<List<Comment>>(
+                    response,
+                    object : TypeToken<List<Comment>>() {}.type
+                )
+                LogUtils.logE(
+                    classTag,
+                    "Size of users from GET_COMMENTS_QUERY ${responseComment.size}"
+                )
             }
         } catch (e: Exception) {
             LogUtils.logE(classTag, e)

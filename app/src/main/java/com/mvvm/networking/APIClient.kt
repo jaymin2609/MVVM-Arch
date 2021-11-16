@@ -3,6 +3,7 @@ package com.mvvm.networking
 import android.content.Context
 import com.mvvm.BuildConfig
 import com.mvvm.utilities.CONNECTION_TIMEOUT
+import com.mvvm.utilities.LogUtils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -39,8 +40,9 @@ open class APIClient {
         httpClient.readTimeout(CONNECTION_TIMEOUT, TimeUnit.MINUTES)
         httpClient.writeTimeout(CONNECTION_TIMEOUT, TimeUnit.MINUTES)
         httpClient.connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MINUTES)
+        LogUtils.logE("APIClient", "Base URL : ${url.substringBeforeLast("/")}")
         retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(url.substringBeforeLast("/"))
+            .baseUrl(url.substringBeforeLast("/")+"/")
             .client(httpClient.build()).build()
         return retrofit
     }
