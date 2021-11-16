@@ -6,7 +6,7 @@ import com.mvvm.BuildConfig
 class LogUtils {
     companion object {
 
-        private const val LOG_PREFIX = PREF_SUNTECK_INDIA
+        private const val LOG_PREFIX = PREF_DEMO_APP
         private const val LOG_PREFIX_LENGTH = LOG_PREFIX.length
         private const val MAX_LOG_TAG_LENGTH = 100
 

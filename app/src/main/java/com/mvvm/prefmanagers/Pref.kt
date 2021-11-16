@@ -2,11 +2,11 @@ package com.mvvm.prefmanagers
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.mvvm.utilities.PREF_SUNTECK_INDIA
+import com.mvvm.utilities.PREF_DEMO_APP
 
 class Pref {
     companion object {
-        private const val PREF_FILE = PREF_SUNTECK_INDIA
+        private const val PREF_FILE = PREF_DEMO_APP
         private lateinit var sharedPreferences: SharedPreferences
 
         private fun openPref(context: Context) {

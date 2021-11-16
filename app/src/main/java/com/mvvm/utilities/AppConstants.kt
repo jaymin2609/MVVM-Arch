@@ -6,7 +6,7 @@ const val APP_MODULE: String = "ETE"
 const val CONNECTION_TIMEOUT: Long = 3
 
 /*Common*/
-const val PREF_SUNTECK_INDIA: String = "PREF_SUNTECK_INDIA"
+const val PREF_DEMO_APP: String = "PREF_DEMO_APP"
 const val PREF_KEY_AUTH: String = "oAuthkey"
 var TAG = "TAG"
 

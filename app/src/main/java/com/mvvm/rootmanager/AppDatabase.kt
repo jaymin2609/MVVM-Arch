@@ -19,7 +19,7 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var appDatabase: AppDatabase? = null
-        private var databaseName = "Sunteck_India_DB"
+        private var databaseName = "Demo_DB"
 
 
         fun getInstance(context: Context): AppDatabase {

@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SunteckRealty"
+        android:theme="@style/Theme.BaseTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.mvvm.ui.activities.SecondActivity"
             android:screenOrientation="portrait"

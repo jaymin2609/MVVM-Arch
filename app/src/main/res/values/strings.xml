@@ -1,5 +1,4 @@
 <resources>
-    <!--    <string name="app_name">Sunteck Realty</string>-->
 
     <string name="msg_unable_connect_with_server">We are unable to connect with the server. Please try after some time.</string>
 

@@ -160,7 +160,7 @@ class DocumentManager {
             try {
                 destination = File(
                     mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES),
-                    "IMG_Sunteck_" + System.currentTimeMillis() + ".jpg"
+                    "IMG_Demo_App_" + System.currentTimeMillis() + ".jpg"
                 )
 
                 if (destination.createNewFile()) {
