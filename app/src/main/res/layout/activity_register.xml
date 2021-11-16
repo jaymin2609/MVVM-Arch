@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.sunteckindia.ui.viewmodels.RegisterViewModel" />
+            type="com.mvvm.ui.viewmodels.RegisterViewModel" />
     </data>
 
     <ScrollView

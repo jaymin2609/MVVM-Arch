@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.sunteckindia.ui.viewmodels.UserListViewModel" />
+            type="com.mvvm.ui.viewmodels.UserListViewModel" />
     </data>
 
     <RelativeLayout

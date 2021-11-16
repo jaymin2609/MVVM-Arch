@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.sunteckindia.database.entity.UserEntity" />
+            type="com.mvvm.database.entity.UserEntity" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

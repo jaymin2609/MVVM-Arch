@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.sunteckindia"
+        applicationId "com.mvvm"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -71,7 +71,7 @@ android {
 
         applicationVariants.all { variant ->
             variant.outputs.all { output ->
-                def project = "Sunteck-India"
+                def project = "Demo-App"
                 def SEP = "_"
                 def SPRINT = "S1.0"
                 def buildType = variant.buildType.name

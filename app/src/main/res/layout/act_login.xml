@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.sunteckindia.ui.viewmodels.LoginViewModel" />
+            type="com.mvvm.ui.viewmodels.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
