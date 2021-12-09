@@ -29,10 +29,12 @@
             layout="@layout/toolbar_main" />
 
         <WebView
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
             android:id="@+id/webView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivPic"

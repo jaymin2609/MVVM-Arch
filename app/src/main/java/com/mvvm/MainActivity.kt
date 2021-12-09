@@ -67,7 +67,7 @@ class MainActivity : BaseActivity(), ApiResponseCallBack, LocationChangeListener
 //        locationFinderAware = LocationFinderAware(mContext, lifecycle, this)
         documentManager = DocumentManager(mContext, DocumentType.DOCUMENT_CONTRACT, this)
         userRepository = UserRepository(Injector.userDao(mContext))
-//        loadWebView()
+        loadWebView()
         binding.btnChoosePhoto.setOnClickListener {
             getFileChooser()
         }
@@ -124,7 +124,7 @@ class MainActivity : BaseActivity(), ApiResponseCallBack, LocationChangeListener
     private fun loadWebView() {
         binding.webView.settings.javaScriptEnabled = true
 //        binding.webView.loadData(html, "text/html", null)
-        binding.webView.loadUrl("http://192.168.3.230:4200")
+        binding.webView.loadUrl("https://upiqr.in/api/qr?name=jaymin%20patel&vpa=jaimin2305@okicici&amount=50.00&format=png")
         binding.webView.addJavascriptInterface(WebAppInterface(this), "android")
     }
 
