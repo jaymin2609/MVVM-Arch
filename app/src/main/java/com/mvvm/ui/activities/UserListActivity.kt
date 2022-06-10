@@ -41,7 +41,9 @@ class UserListActivity : BaseActivity(), LocationChangeListener {
     private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
     private val userListViewModel: UserListViewModel by viewModels()
     private lateinit var userListAdapter: UserListAdapter
-    private lateinit var progressBar: ProgressBar
+
+    @Inject
+    lateinit var progressBar: ProgressBar
 
 
     @Inject
@@ -65,7 +67,7 @@ class UserListActivity : BaseActivity(), LocationChangeListener {
     }
 
     private fun initViews() {
-        progressBar = ProgressBar(context = mContext)
+//        progressBar = ProgressBar(context = mContext)
         binding.rvUserList.layoutManager = LinearLayoutManager(mContext)
         userListAdapter =
             UserListAdapter { listItemClicked(it) }

@@ -5,8 +5,13 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.widget.AppCompatTextView
 import com.mvvm.R
+import javax.inject.Inject
 
-class ProgressBar(var title: String="", isCancelable: Boolean=false, val context: Context) {
+class ProgressBar @Inject constructor(
+    var title: String = "",
+    isCancelable: Boolean = false,
+    val context: Context
+) {
     private val classTag = ProgressBar::class.java.simpleName
     private var dialog: AppCompatDialog =
         AlertDialogManager.getCustomDialogWithTransparentBack(context, R.layout.dialog_loading)

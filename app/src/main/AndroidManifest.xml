@@ -21,7 +21,8 @@
         <activity android:name="com.mvvm.ui.activities.SecondActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".MainActivity">
+<!--        <activity android:name=".MainActivity">-->
+        <activity android:name=".ui.activities.UserListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

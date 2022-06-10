@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import com.mvvm.locationmanager.LocationChangeListener
 import com.mvvm.locationmanager.LocationFinderAware
+import com.mvvm.utilities.ProgressBar
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +26,11 @@ object UserListModule {
         @ActivityContext mContext: Context,
         locationChangeListener: LocationChangeListener
     ) = LocationFinderAware(mContext, locationChangeListener)
+
+    @Provides
+    @ActivityScoped
+    fun provideProgressBar(@ActivityContext mContext: Context) = ProgressBar(
+        context = mContext
+    )
 
 }
