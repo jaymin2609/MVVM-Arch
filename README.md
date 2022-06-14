@@ -5,7 +5,7 @@ Inclusion :
  2. ViewModel
  3. Live Data
  4. Room Database
- 5. Retrofit
+ 5. Retrofit with Generic Structure
  6. Dagger-Hilt
  7. Camera & Gallery
  8. Run-time permission
