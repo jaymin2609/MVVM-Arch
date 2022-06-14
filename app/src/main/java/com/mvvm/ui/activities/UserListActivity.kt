@@ -39,7 +39,19 @@ class UserListActivity : BaseActivity(), LocationChangeListener {
     private lateinit var binding: ActivityUserListBinding
     lateinit var mContext: Context
     private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
-    private val userListViewModel: UserListViewModel by viewModels()
+
+    private lateinit var userId : String
+
+    @Inject
+    lateinit var userListViewModelFactory: UserListViewModel.UserListViewModelFactory
+
+    private val userListViewModel: UserListViewModel by viewModels {
+        UserListViewModel.providesFactory(
+            assistedFactory = userListViewModelFactory,
+            userId = userId
+        )
+    }
+
     private lateinit var userListAdapter: UserListAdapter
 
     @Inject
@@ -54,6 +66,7 @@ class UserListActivity : BaseActivity(), LocationChangeListener {
             super.onCreate(savedInstanceState)
             binding = DataBindingUtil.setContentView(this, R.layout.activity_user_list)
             mContext = this
+            userId="2"
             initViewModel()
             initViews()
         } catch (e: Exception) {

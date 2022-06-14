@@ -1,8 +1,6 @@
 package com.mvvm.ui.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mvvm.database.entity.UserEntity
@@ -14,6 +12,9 @@ import com.mvvm.pojos.Comment
 import com.mvvm.rootmanager.BaseViewModel
 import com.mvvm.rootmanager.SealedResource
 import com.mvvm.utilities.LogUtils
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,12 +23,31 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-@HiltViewModel
-class UserListViewModel @Inject constructor(
+//@HiltViewModel
+class UserListViewModel @AssistedInject constructor(
     private val userRepository: UserRepository,
+    private val apiServiceProviderGeneric: ApiServiceProviderGeneric,
+    @Assisted
+    private val userId: String
 
-    private val apiServiceProviderGeneric: ApiServiceProviderGeneric
 ) : BaseViewModel(), ApiResponseCallBack {
+
+    @AssistedFactory
+    interface UserListViewModelFactory {
+        fun create(userId: String): UserListViewModel
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    companion object {
+        fun providesFactory(
+            assistedFactory: UserListViewModelFactory,
+            userId: String
+        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return assistedFactory.create(userId) as T
+            }
+        }
+    }
 
     private val classTag = this::class.java.simpleName
 
@@ -43,6 +63,7 @@ class UserListViewModel @Inject constructor(
     private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
 
     init {
+        LogUtils.logE(classTag,"User ID : $userId")
         viewModelScope.launch {
             userRepository
                 .insert(UserEntity(name = "Shiv", age = 28000))
