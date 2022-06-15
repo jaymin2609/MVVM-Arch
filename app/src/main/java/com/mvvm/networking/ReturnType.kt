@@ -6,4 +6,5 @@ enum class ReturnType(val endPoint: String) {
     GET_USERS_URL("https://jsonplaceholder.typicode.com/users"),
     GET_USERS("users"),
     GET_COMMENTS_QUERY("https://jsonplaceholder.typicode.com/comments?postId=1"),
+    POST_INSPECTION_STAGES(""),
 }

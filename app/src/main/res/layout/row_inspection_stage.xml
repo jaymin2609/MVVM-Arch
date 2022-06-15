@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.mvvm.pojos.Stage" />
+
+        <variable
+            name="pos"
+            type="java.lang.Integer" />
+
+        <variable
+            name="totalCount"
+            type="java.lang.Integer" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivCheckBox"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:checked="true"
+                    android:clickable="false"
+                    android:src="@{item.status.equals(`COMPLETED`) ? @drawable/ic_check_box : @drawable/ic_check_box_outline }" />
+
+                <View
+
+                    android:id="@+id/viewLine"
+                    android:layout_width="@dimen/_3sdp"
+                    android:layout_height="@dimen/_65sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@{item.status.equals(`COMPLETED`) ? @color/colorError : @color/gray }"
+                    android:visibility="@{pos == totalCount ? view.GONE : view.VISIBLE }" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/llIndicator"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvName"
+                    style="@style/NormalTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.subStage}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    tools:text="Jaymin Patel" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAge"
+                    style="@style/SmallTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.status}"
+                    android:textColor="@color/black"
+                    tools:text="28" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmail"
+                    style="@style/SmallTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.datetime}"
+                    android:textColor="@color/black"
+                    tools:text="28" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

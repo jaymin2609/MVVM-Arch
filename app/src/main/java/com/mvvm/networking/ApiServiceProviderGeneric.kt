@@ -1,5 +1,6 @@
 package com.mvvm.networking
 
+import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.mvvm.BuildConfig
@@ -31,9 +32,10 @@ class ApiServiceProviderGeneric @Inject constructor(
 
 
     fun postCall(
-        jsonObj: JsonObject,
+        jsonObj: Any,
         returnType: ReturnType
     ) {
+        val json = Gson().fromJson(Gson().toJson(jsonObj), JsonObject::class.java)
         coroutineScope.launch {
             try {
                 launch(Dispatchers.Main) {
@@ -43,7 +45,7 @@ class ApiServiceProviderGeneric @Inject constructor(
                 }
                 val call =
                     getClientWithHeader(ResourceProvider.applicationContext).create(GetCallReference::class.java)
-                        .postCall(BuildConfig.BASE_URL + returnType.endPoint, jsonObj)
+                        .postCall(BuildConfig.BASE_URL + returnType.endPoint, json)
                 launch(Dispatchers.Main) {
                     if (call.body() != null && call.isSuccessful) {
                         LogUtils.logE(classTag, "response : ${call.body() as JsonElement}")
@@ -76,9 +78,10 @@ class ApiServiceProviderGeneric @Inject constructor(
     }
 
     fun postCallUrl(
-        jsonObj: JsonObject,
+        jsonObj: Any,
         returnType: ReturnType
     ) {
+        val json = Gson().fromJson(Gson().toJson(jsonObj), JsonObject::class.java)
         coroutineScope.launch {
             try {
                 launch(Dispatchers.Main) {
@@ -88,7 +91,7 @@ class ApiServiceProviderGeneric @Inject constructor(
                 }
                 val call =
                     getClientWithHeader(ResourceProvider.applicationContext).create(GetCallReference::class.java)
-                        .postCall(returnType.endPoint, jsonObj)
+                        .postCall(returnType.endPoint, json)
                 launch(Dispatchers.Main) {
                     if (call.body() != null && call.isSuccessful) {
                         LogUtils.logE(classTag, "response : ${call.body() as JsonElement}")
@@ -164,6 +167,7 @@ class ApiServiceProviderGeneric @Inject constructor(
             }
         }
     }
+
     fun getCallUrl(
         returnType: ReturnType
     ) {
