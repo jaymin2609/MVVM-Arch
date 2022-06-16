@@ -66,8 +66,8 @@ class InspectionStagesListActivity : BaseActivity() {
             when (userList) {
                 is SealedResource.Success -> {
                     //This is handle inside the .xml using data binding
-                    inspectionStageAdapter.setList(userList.data!!)
-                    inspectionStageAdapter.notifyDataSetChanged()
+                    inspectionStageAdapter.list= (userList.data as MutableList<Stage>?)!!
+//                    inspectionStageAdapter.notifyDataSetChanged()
                 }
                 is SealedResource.Error -> {
 
