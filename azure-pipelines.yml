@@ -23,4 +23,4 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**/*.apk'
-    TargetFolder: '$(build.artifactstagingDirectory)'
+    TargetFolder: '$(build.artifactstagingDirectory)/test'
