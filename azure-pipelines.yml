@@ -19,3 +19,8 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.apk'
+    TargetFolder: '$(build.artifactstagingDirectory)'
