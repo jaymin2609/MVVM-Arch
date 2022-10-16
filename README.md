@@ -11,4 +11,5 @@ Inclusion :
  8. Run-time permission
  9. Location Manager
  10. Data Binding & UI validations
+ 11. Azure CI/CD Pipline Test
  
