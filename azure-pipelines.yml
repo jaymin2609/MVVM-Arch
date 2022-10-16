@@ -39,5 +39,5 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'firebase appdistribution:distribute $(Build.SourcesDirectory)/../s/app/build/outputs/apk/qa/debug/*.apk --token 1//0gXpuODwJhaY0CgYIARAAGBASNwF-L9IrT4UIKntF7dA5thkHtFNJXdY7_iR4M6Ys5vgvV3Q3hDou2VI3JhebL4pw8Z7vYn2Ablo --app 1:334273685778:android:9ef2e0b6a82d62ed88ebcb --release-notes "Upload from azure"'
+    script: 'firebase appdistribution:distribute $(Build.SourcesDirectory)/../s/app/build/outputs/apk/qa/debug/*.apk --token 1//0gXpuODwJhaY0CgYIARAAGBASNwF-L9IrT4UIKntF7dA5thkHtFNJXdY7_iR4M6Ys5vgvV3Q3hDou2VI3JhebL4pw8Z7vYn2Ablo --app 1:334273685778:android:9ef2e0b6a82d62ed88ebcb --testers "jaimin2305@gmail.com" --release-notes "Upload from azure"'
 
