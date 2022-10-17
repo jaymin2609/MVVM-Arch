@@ -58,8 +58,8 @@ android {
             resValue "string", "app_name", "QA-Demo App"
             applicationIdSuffix ".qa"
             isDefault.set(true)
-            versionCode 3
-            versionName "1.0.2"
+            versionCode 4
+            versionName "1.0.4"
             buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
         }
         uat {
