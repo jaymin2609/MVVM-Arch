@@ -58,8 +58,8 @@ android {
             resValue "string", "app_name", "QA-Demo App"
             applicationIdSuffix ".qa"
             isDefault.set(true)
-            versionCode 4
-            versionName "1.0.4"
+            versionCode 5
+            versionName "1.0.5"
             buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
         }
         uat {
@@ -158,6 +158,10 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:31.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+
 
 }
 
